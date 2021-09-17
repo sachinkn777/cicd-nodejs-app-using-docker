@@ -21,7 +21,7 @@ node {
     }
 	stage("Run Docker"){
 		sh 'docker run -d -p 9002:9005 asia.gcr.io/myfirst-devops-project/js-app:v1'
-		sh 'sudo rm -rf /var/lib/jenkins/workspace/cicd*'
+		
 		
 }
 }
