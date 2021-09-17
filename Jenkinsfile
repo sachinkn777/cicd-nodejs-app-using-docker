@@ -20,7 +20,7 @@ node {
 	
     }
 	stage("Run Docker"){
-		sh 'docker run -d -p 9002:9005 asia.gcr.io/myfirst-devops-project/js-app:v1 --name js-app-v1'
+		sh 'docker run -d -p 9002:9005  --name js-app-v1 asia.gcr.io/myfirst-devops-project/js-app:v1'
 		
 		
 }
