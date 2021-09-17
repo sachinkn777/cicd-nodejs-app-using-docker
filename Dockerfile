@@ -6,7 +6,7 @@ FROM node:13-alpine
 WORKDIR /app
 
 
-COPY /var/lib/jenkins/workspace/cicd-js-app/cicd-nodejs-app-using-docker/* /app
+COPY ./cicd-nodejs-app-using-docker/* /app
 
 
 RUN npm install
