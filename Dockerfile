@@ -5,7 +5,7 @@ FROM node:13-alpine
 
 WORKDIR /app
 
-RUN cd /var/lib/jenkins/workspace/cicd-js-app/cicd-nodejs-app-using-docker/
+RUN pwd
 
 COPY . /app
 
