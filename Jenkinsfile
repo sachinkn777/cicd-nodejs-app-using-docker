@@ -6,8 +6,8 @@ node {
     }
 
 	stage("Docker build"){
-		sh 'cd cicd-js-app'
-        	sh 'cat cicd-js-app/Dockerfile | docker build -f - . -t asia.gcr.io/myfirst-devops-project/js-app:v1'
+		sh 'cd cicd-nodejs-app-using-docker'
+        	sh 'cat cicd-nodejs-app-using-docker/Dockerfile | docker build -f - . -t asia.gcr.io/myfirst-devops-project/js-app:v1'
         	sh 'docker image list'
 		}
     
@@ -16,10 +16,10 @@ node {
         	sh 'gcloud auth configure-docker -q'
 		sh 'gcloud auth list'
 		sh 'docker push asia.gcr.io/myfirst-devops-project/js-app:v1'
-		sh 'rm -rf /var/lib/jenkins/workspace/cicd-js-app*'
+		sh 'rm -rf /var/lib/jenkins/workspace/cicd-nodejs-app-using-docker*'
     }
 	stage("Run Docker"){
 		sh 'docker run -d -p 9002:9005 asia.gcr.io/myfirst-devops-project/js-app:v1'
 		
-
+}
 }
