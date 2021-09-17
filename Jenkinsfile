@@ -17,10 +17,11 @@ node {
         	sh 'gcloud auth configure-docker -q'
 		sh 'gcloud auth list'
 		sh 'docker push asia.gcr.io/myfirst-devops-project/js-app:v1'
-		sh 'rm -rf /var/lib/jenkins/workspace/cicd-js-app*'
+	
     }
 	stage("Run Docker"){
 		sh 'docker run -d -p 9002:9005 asia.gcr.io/myfirst-devops-project/js-app:v1'
+		sh 'sudo rm -rf /var/lib/jenkins/workspace/cicd*'
 		
 }
 }
