@@ -4,4 +4,19 @@ node {
       sh 'ls -ltr'
       sh 'pwd'
     }
+
+    stage("Docker build"){
+		sh 'cd cicd-js-app'
+        sh 'cat cicd-js-app/Dockerfile | docker build -f - . -t asia.gcr.io/myfirst-devops-project/js-app:v1'
+        sh 'docker image list'
+		}
+    
+	stage("Image Push"){
+		sh 'gcloud auth activate-service-account  myfirst-devops-project@appspot.gserviceaccount.com --key-file=/var/lib/jenkins/myfirst-devops-project-b8ec22d9c28d.json'
+        sh 'gcloud auth configure-docker -q'
+		sh 'gcloud auth list'
+		sh 'docker push asia.gcr.io/myfirst-devops-project/js-app:v1'
+		sh 'rm -rf /var/lib/jenkins/workspace/cicd-js-app*'
+    }
+
 }
