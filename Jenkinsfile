@@ -7,6 +7,7 @@ node {
 
 	stage("Docker build"){
 		sh 'cd cicd-nodejs-app-using-docker'
+		sh 'pwd'
         	sh 'cat Dockerfile | docker build -f - . -t asia.gcr.io/myfirst-devops-project/js-app:v1'
         	sh 'docker image list'
 		}
